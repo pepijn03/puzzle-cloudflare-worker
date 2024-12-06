@@ -11,6 +11,6 @@
 
 export default {
   async fetch(request, env, ctx) {
-    return new Response('Yurp!');
+    return new Response('HELLOOOO!');
   },
 };
