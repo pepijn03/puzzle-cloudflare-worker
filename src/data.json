@@ -1,0 +1,59 @@
+[
+    {
+        "_id": "67253fb8d484805aba8f197e",
+        "date": "2024-10-07",
+        "verticalHints": [
+            "vhint1",
+            "vhint2",
+            "vhint3"
+        ],
+        "horizontalHints": [
+            "hhint1",
+            "hhint2",
+            "hhint3"
+        ],
+        "answer": [
+            "word1",
+            "word2",
+            "word3"
+        ]
+    },
+    {
+        "_id": "67254030d484805aba8f1980",
+        "date": "2024-10-08",
+        "verticalHints": [
+            "vhint1",
+            "vhint2",
+            "vhint3"
+        ],
+        "horizontalHints": [
+            "hhint1",
+            "hhint2",
+            "hhint3"
+        ],
+        "answer": [
+            "word1",
+            "word2",
+            "word3"
+        ]
+    },
+    {
+        "_id": "6744a5eed892689be7ac6976",
+        "date": "2024-11-25",
+        "verticalHints": [
+            "vhint1",
+            "vhint2",
+            "vhint3"
+        ],
+        "horizontalHints": [
+            "hhint1",
+            "hhint2",
+            "hhint3"
+        ],
+        "answer": [
+            "word1",
+            "word2",
+            "word3"
+        ]
+    }
+]
