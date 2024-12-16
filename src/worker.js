@@ -1,20 +1,44 @@
 export default {
   async fetch(request, env, ctx) {
     try {
-      // Option 1: Using static import (recommended for small, static files)
-      const jsonData = await import('./data.json', { assert: { type: 'json' } });
+      // Parse URL parameters from the incoming request
+      const url = new URL(request.url);
+      const limit = parseInt(url.searchParams.get('limit') || '10', 10);
 
-      return new Response(JSON.stringify(jsonData.default), {
+      // Fetch data from the microservice
+      const microserviceResponse = await fetch(env.MICROSERVICE_URL, {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      // Check if the response is successful
+      if (!microserviceResponse.ok) {
+        throw new Error(`Microservice returned ${microserviceResponse.status}`);
+      }
+
+      // Parse the JSON response
+      const rawData = await microserviceResponse.json();
+
+      // Sort the records by time (assuming each record has a 'time' property)
+      const sortedRecords = rawData.sort((a, b) => a.timespan - b.timespan);
+
+      // Limit the number of records
+      const limitedRecords = sortedRecords.slice(0, limit);
+
+      // Return the processed data
+      return new Response(JSON.stringify(limitedRecords), {
         headers: {
           'Content-Type': 'application/json',
           'Access-Control-Allow-Origin': '*'
         }
       });
     } catch (error) {
-      console.error('Error reading JSON file:', error);
+      console.error('Error processing microservice data:', error);
 
       return new Response(JSON.stringify({ 
-        error: 'Failed to read JSON file',
+        error: 'Failed to process microservice data',
         details: error.message 
       }), {
         status: 500,

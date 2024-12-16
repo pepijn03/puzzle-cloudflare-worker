@@ -4,3 +4,6 @@ compatibility_date = "2024-12-06"
 workers_dev = true
 preview_urls = false
 compatibility_flags = ["nodejs_compat"]
+
+[vars]
+MICROSERVICE_URL = "http://puzzle-app-microservice.braverock-6ea67e55.swedencentral.azurecontainerapps.io/results"
